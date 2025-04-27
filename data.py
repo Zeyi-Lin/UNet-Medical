@@ -35,6 +35,6 @@ class COCOSegmentationDataset(Dataset):
         if self.transform:
             image = self.transform(image)
             mask = torch.from_numpy(mask).float().unsqueeze(0)
-            mask = nn.functional.interpolate(mask.unsqueeze(0), size=(256, 256), mode='nearest').squeeze(0)
+            mask = nn.interpolate(mask.unsqueeze(0), size=(256, 256), mode='nearest').squeeze(0)
 
         return image, mask
